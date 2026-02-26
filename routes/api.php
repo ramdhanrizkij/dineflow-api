@@ -1,0 +1,14 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+
+Route::get('/health', function () {
+    return response()->json(['status' => 'ok']);
+});
+
+Route::prefix('v1')->group(function () {
+    require __DIR__ . '/api/auth.php';
+    require __DIR__ . '/api/rbac.php';
+    require __DIR__ . '/api/user.php';
+});
