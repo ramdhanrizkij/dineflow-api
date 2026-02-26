@@ -10,4 +10,5 @@ Route::get('/health', function () {
 Route::prefix('v1')->group(function () {
     require __DIR__ . '/api/auth.php';
     require __DIR__ . '/api/rbac.php';
+    require __DIR__ . '/api/user.php';
 });
