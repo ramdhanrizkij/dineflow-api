@@ -149,5 +149,26 @@ class RolePermissionSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
         $cashier->assignRole('cashier');
+
+        $siti = User::create([
+            'name'     => 'Siti Rahayu',
+            'email'    => 'siti.waiter@dineflow.com',
+            'password' => bcrypt('password'),
+        ]);
+        $siti->assignRole('waiter');
+
+        $budi = User::create([
+            'name'     => 'Budi Santoso',
+            'email'    => 'budi.waiter@dineflow.com',
+            'password' => bcrypt('password'),
+        ]);
+        $budi->assignRole('waiter');
+
+        $rina = User::create([
+            'name'     => 'Rina Marlina',
+            'email'    => 'rina.cashier@dineflow.com',
+            'password' => bcrypt('password'),
+        ]);
+        $rina->assignRole('cashier');
     }
 }
