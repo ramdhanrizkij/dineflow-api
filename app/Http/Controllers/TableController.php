@@ -14,6 +14,7 @@ class TableController extends Controller
     public function index(): JsonResponse
     {
         $tables = Table::select('id', 'code', 'capacity', 'status', 'created_at', 'updated_at')
+            ->with('category')
             ->orderBy('code', 'asc')
             ->get();
 
@@ -56,7 +57,10 @@ class TableController extends Controller
             'code'     => $request->code,
             'capacity' => $request->capacity,
             'status'   => $request->status,
+            'table_category_id' => $request->table_category_id,
         ]);
+
+        $table->load('category');
 
         return ApiResponse::created([
             'id'         => $table->id,
@@ -65,6 +69,10 @@ class TableController extends Controller
             'status'     => $table->status,
             'created_at' => $table->created_at,
             'updated_at' => $table->updated_at,
+            'category'   => $table->category ? [
+                'id'   => $table->category->id,
+                'name' => $table->category->name,
+            ] : null,
         ], 'Table created successfully');
     }
 
@@ -77,6 +85,10 @@ class TableController extends Controller
             'status'     => $table->status,
             'created_at' => $table->created_at,
             'updated_at' => $table->updated_at,
+            'category'   => $table->category ? [
+                'id'   => $table->category->id,
+                'name' => $table->category->name,
+            ] : null,
         ], 'Table retrieved successfully');
     }
 
@@ -86,7 +98,10 @@ class TableController extends Controller
             'code'     => $request->code,
             'capacity' => $request->capacity,
             'status'   => $request->status,
+            'table_category_id' => $request->table_category_id,
         ]);
+
+        $table->load('category');
 
         return ApiResponse::success([
             'id'         => $table->id,
@@ -95,6 +110,10 @@ class TableController extends Controller
             'status'     => $table->status,
             'created_at' => $table->created_at,
             'updated_at' => $table->updated_at,
+            'category'   => $table->category ? [
+                'id'   => $table->category->id,
+                'name' => $table->category->name,
+            ] : null,
         ], 'Table updated successfully');
     }
 
