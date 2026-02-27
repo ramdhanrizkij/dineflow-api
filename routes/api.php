@@ -13,5 +13,6 @@ Route::prefix('v1')->group(function () {
     require __DIR__ . '/api/user.php';
     require __DIR__ . '/api/table.php';
     require __DIR__ . '/api/category.php';
+    require __DIR__ . '/api/order.php';
     require __DIR__ . '/api/menu.php';
 });
