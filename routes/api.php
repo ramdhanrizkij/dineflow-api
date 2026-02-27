@@ -12,4 +12,5 @@ Route::prefix('v1')->group(function () {
     require __DIR__ . '/api/rbac.php';
     require __DIR__ . '/api/user.php';
     require __DIR__ . '/api/table.php';
+    require __DIR__ . '/api/category.php';
 });
