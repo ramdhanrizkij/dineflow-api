@@ -17,6 +17,7 @@ class StoreTableRequest extends FormRequest
             'code'     => 'required|string|max:50|unique:tables,code',
             'capacity' => 'required|integer|min:1',
             'status'   => 'required|in:available,occupied,reserved,inactive',
+            'table_category_id' => 'required|exists:table_categories,id',
         ];
     }
 
@@ -31,6 +32,8 @@ class StoreTableRequest extends FormRequest
             'capacity.min'      => 'Capacity must be at least 1.',
             'status.required'   => 'Status is required.',
             'status.in'         => 'Status must be one of: available, occupied, reserved, inactive.',
+            'table_category_id.required' => 'Table category is required.',
+            'table_category_id.exists'   => 'Table category must exist.',
         ];
     }
 }

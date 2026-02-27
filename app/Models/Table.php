@@ -11,6 +11,7 @@ class Table extends Model
         'capacity',
         'status',
         'current_order_id',
+        'table_category_id',
     ];
 
     public function currentOrder(): BelongsTo
@@ -21,5 +22,9 @@ class Table extends Model
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class, 'table_id');
+    }
+
+    function category() : BelongsTo {
+        return $this->belongsTo(TableCategory::class, 'table_category_id');
     }
 }
